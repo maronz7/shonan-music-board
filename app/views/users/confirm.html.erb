@@ -1,0 +1,26 @@
+<div class="main user-show users-bg">
+  <div class="container">
+    <div class="user">
+      <img src="<%= "/user_images/#{@user.image_name}" %>">
+      <h2><%= @user.name %></h2>
+
+      <div class="confirm-wrap">
+      <p class="confirm-title">本当に退会しますか？</p>
+      <p class="confirm-message">退会すると、自分が過去にした投稿やいいねなど、<br>
+      <span class="caution">全てのデータが削除され、復旧はできません。</span></p>
+      </div>
+
+      <% if @user.id == @current_user.id %>
+      <div class="btn-container">
+      <div class="back-btn">
+        <%= link_to("戻る", "/users/#{@user.id}") %>
+        </div>
+        <div class="delete-btn">
+        <%= link_to("退会", "/users/#{@user.id}/destroy",{method: "post"}) %>
+        </div>
+        </div>
+      <% end %>
+    </div>
+    
+  </div>
+</div>

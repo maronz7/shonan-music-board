@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post "likes/:post_id/destroy" => "likes#destroy"
 
   post "users/:id/update" => "users#update"
+  post "users/:id/destroy" => "users#destroy"
+  get  "users/:id/destroy" => "users#confirm"
   get "users/:id/edit" => "users#edit"
   post "users/create" => "users#create"
   get "signup" => "users#new"

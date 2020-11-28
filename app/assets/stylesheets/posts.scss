@@ -1,4 +1,12 @@
 /* posts/index ================================ */
+
+.posts-bg{
+  background-repeat: no-repeat;
+  background-position: center 50%;
+  background-size: cover;
+  background-image: url("/bg_images/enoshima_evening.jpg");
+}
+
 .posts-index-item {
   padding: 20px 30px;
   background-color: white;
@@ -77,6 +85,12 @@
 .post-time {
   color: #8899a6;
   margin-bottom: 10px;
+}
+
+.post-latest-time{
+  color: #8899a6;
+  margin-bottom: 10px;
+  float:right;
 }
 
 .like-btn {

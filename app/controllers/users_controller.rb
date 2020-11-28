@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, {only: [:index, :show, :edit, :update]}
   before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
-  before_action :ensure_correct_user, {only: [:edit, :update]}
+  before_action :ensure_correct_user, {only: [:edit, :update,:destroy,:confirm]}
   
   def index
     @users = User.all
@@ -52,6 +52,21 @@ class UsersController < ApplicationController
     else
       render("users/edit")
     end
+  end
+
+  def destroy
+    @user = User.find_by(id: params[:id])
+    @user.destroy
+    
+    Post.where(user_id: params[:id]).destroy_all
+    Like.where(user_id: params[:id]).destroy_all
+
+    flash[:notice] = "アカウントを削除し、退会が完了しました"
+    redirect_to("/login")
+  end
+
+  def confirm
+    @user = User.find_by(id: params[:id])
   end
   
   def login_form
