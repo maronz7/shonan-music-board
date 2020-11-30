@@ -10,7 +10,7 @@
             <%= link_to(post.user.name, "/users/#{post.user.id}") %>
           </div>
           <%= link_to(post.content, "/posts/#{post.id}") %>
-          <div class="post-latest-time"><%=post.created_at.strftime("%Y-%m-%d %H:%M") %></div>
+          <div class="post-latest-time"><%=time_ago_in_words(post.created_at) %> ago</div>
         </div>
       </div>
     <% end %>
